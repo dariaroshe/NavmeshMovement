@@ -20,6 +20,11 @@ namespace HealthMechanics
 
         public void Reduce(int damage)
         {
+            if (Value == 0)
+            {
+                return;
+            }
+            
             Value -= damage;
 
             if (Value < 0)
@@ -28,7 +33,6 @@ namespace HealthMechanics
             }
             
             Reduced?.Invoke();
-            Debug.Log(Value);
         }
 
         public void Increase(int amount)
