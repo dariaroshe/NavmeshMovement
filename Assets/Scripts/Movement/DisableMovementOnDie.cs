@@ -1,8 +1,8 @@
-using System;
+using HealthMechanics;
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace DefaultNamespace
+namespace Movement
 {
     public class DisableMovementOnDie : MonoBehaviour
     {

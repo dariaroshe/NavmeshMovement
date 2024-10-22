@@ -1,8 +1,8 @@
-using System;
+using Service;
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace DefaultNamespace
+namespace Movement
 {
     public class SetAgentDestinationOnClick : MonoBehaviour
     {

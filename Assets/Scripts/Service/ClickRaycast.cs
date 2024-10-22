@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace DefaultNamespace
+namespace Service
 {
     public class ClickRaycast : MonoBehaviour
     {
