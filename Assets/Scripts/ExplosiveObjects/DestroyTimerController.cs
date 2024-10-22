@@ -9,15 +9,17 @@ namespace ExplosiveObjects
     {
         private readonly HealthReactTrigger _trigger;
         private readonly EventField _exploded;
+        private readonly float _explosionDelay;
+        
+        private Coroutine _coroutine;
         
         private bool _startExplosion;
-        private float _explosionDelay = 5f;
-        private Coroutine _coroutine;
 
-        public DestroyTimerController(HealthReactTrigger trigger, EventField exploded)
+        public DestroyTimerController(HealthReactTrigger trigger, EventField exploded, float explosionDelay)
         {
             _trigger = trigger;
             _exploded = exploded;
+            _explosionDelay = explosionDelay;
         }
 
         public void Deactivate()

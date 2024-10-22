@@ -7,13 +7,14 @@ namespace ExplosiveObjects
     public class ReduceHealthController : IController
     {
         private readonly SphereCollider _collider;
+        private readonly int _damage;
         private readonly EventField _exploded;
-        private int _damageMine = 10;
 
-        public ReduceHealthController(EventField exploded, SphereCollider collider)
+        public ReduceHealthController(EventField exploded, SphereCollider collider, int damage)
         {
             _exploded = exploded;
             _collider = collider;
+            _damage = damage;
         }
 
         public void Deactivate()
@@ -34,7 +35,7 @@ namespace ExplosiveObjects
             {
                 if (impactedCollider.TryGetComponent(out Health health))
                 {
-                    health.Reduce(_damageMine);
+                    health.Reduce(_damage);
                 }
             }
         }

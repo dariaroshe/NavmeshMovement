@@ -12,6 +12,7 @@ namespace HealthMechanics
         [field: SerializeField] public int MaxValue { get; private set; }
 
         public bool IsAlive => Value > 0;
+        public float Percent => (float) Value / MaxValue;
 
         private void Awake()
         {

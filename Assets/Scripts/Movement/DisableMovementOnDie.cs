@@ -26,7 +26,7 @@ namespace Movement
                 return;
             }
             
-            _agent.enabled = false;
+            _agent.isStopped = true;
         }
     }
 }

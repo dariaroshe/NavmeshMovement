@@ -40,7 +40,7 @@ namespace HealthMechanics
 
         private void UpdateBar()
         {
-            _bar.fillAmount = ((float)_health.Value) / _health.MaxValue;
+            _bar.fillAmount = _health.Percent;
         }
     }
 }
