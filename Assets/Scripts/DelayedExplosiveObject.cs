@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace DefaultNamespace
 {
-    public class Mine : MonoBehaviour
+    public class DelayedExplosiveObject : MonoBehaviour
     {
         private int _damageMine = 10;
         private float _explosionDelay = 5f;
