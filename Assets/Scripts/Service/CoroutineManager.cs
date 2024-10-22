@@ -10,11 +10,16 @@ namespace Service
 
         public static void Stop(Coroutine coroutine)
         {
+            if (coroutine == null)
+            {
+                return;
+            }
+            
             if (!_initialized)
             {
                 Initialize();
             }
-            
+
             _instance.StopCoroutine(coroutine);
         }
         
