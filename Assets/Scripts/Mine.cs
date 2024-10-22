@@ -2,51 +2,48 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-namespace DefaultNamespace
+public class Mine : MonoBehaviour
 {
-    public class Mine : MonoBehaviour
+    private int _damageMine = 10;
+    private float _explosionDelay = 5f;
+    private SphereCollider _collider;
+
+    private bool _startExplosion;
+
+    private void Start()
     {
-        private int _damageMine = 10;
-        private float _explosionDelay = 5f;
-        private SphereCollider _collider;
+        _collider = GetComponent<SphereCollider>();
+    }
 
-        private bool _startExplosion;
-
-        private void Start()
+    private void OnTriggerEnter(Collider other)
+    {
+        if (_startExplosion)
         {
-            _collider = GetComponent<SphereCollider>();
+            return;
         }
 
-        private void OnTriggerEnter(Collider other)
+        if (other.TryGetComponent(out Health health))
         {
-            if (_startExplosion)
-            {
-                return;
-            }
-
-            if (other.TryGetComponent(out Health health))
-            {
-                StartCoroutine(WaitForExplosion());
-            }
+            StartCoroutine(WaitForExplosion());
         }
+    }
 
-        private IEnumerator WaitForExplosion()
-        {
-            _startExplosion = true;
+    private IEnumerator WaitForExplosion()
+    {
+        _startExplosion = true;
             
-            yield return new WaitForSeconds(_explosionDelay);
+        yield return new WaitForSeconds(_explosionDelay);
 
-            var allColliders = Physics.OverlapSphere(transform.position, _collider.radius);
+        var allColliders = Physics.OverlapSphere(transform.position, _collider.radius);
 
-            foreach (var impactedCollider in allColliders)
+        foreach (var impactedCollider in allColliders)
+        {
+            if(impactedCollider.TryGetComponent(out Health health))
             {
-                if(impactedCollider.TryGetComponent(out Health health))
-                {
-                    health.Reduce(_damageMine);
-                }
+                health.Reduce(_damageMine);
             }
-            
-            Destroy(gameObject);
         }
+            
+        Destroy(gameObject);
     }
 }

@@ -1,4 +1,4 @@
-namespace DefaultNamespace
+namespace Service
 {
     public interface IController
     {
